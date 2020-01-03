@@ -1,0 +1,85 @@
+version: '3.5'
+services:
+    cli:
+        container_name: node12
+        image: node:12-alpine
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/node']
+
+    npm:
+        container_name: node12-npm
+        image: node:12-alpine
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/npm']
+
+    npx:
+        container_name: node12-npx
+        image: node:12-alpine
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/npx']
+
+    yarn:
+        container_name: node12-yarn
+        image: node:12-alpine
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/yarn']
+
+    ncu:
+        container_name: node12-ncu
+        build: 
+            context: docker/node
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/ncu']
+
+    cli10:
+        container_name: node10
+        image: node:10-alpine
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/node']
+
+    npm10:
+        container_name: node10-npm
+        image: node:10-alpine
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/npm']
+
+    npx10:
+        container_name: node10-npx
+        image: node:10-alpine
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/npx']
+
+    yarn10:
+        container_name: node10-yarn
+        image: node:10-alpine
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/yarn']
+
+    ncu10:
+        container_name: node10-ncu
+        build: 
+            context: docker/node10
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/ncu']
