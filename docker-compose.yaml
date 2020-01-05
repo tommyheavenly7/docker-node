@@ -1,71 +1,78 @@
 version: '3.7'
 services:
-    cli:
-        container_name: node12
-        build:
-            context: docker/node
-            dockerfile: Dockerfile
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-#        entrypoint: [ "/usr/local/bin/node" ]
+  cli:
+    container_name: node12
+    build:
+      context: docker/node
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
 
-    npm:
-        container_name: node12-npm
-        build:
-            context: docker/node
-            dockerfile: Dockerfile
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: [ "/usr/local/bin/npm" ]
+  npm:
+    container_name: node12-npm
+    build:
+      context: docker/node
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: [ "/usr/local/bin/npm" ]
 
-    npx:
-        container_name: node12-npx
-        build:
-            context: docker/node
-            dockerfile: Dockerfile
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: [ "/usr/local/bin/npx" ]
+  npx:
+    container_name: node12-npx
+    build:
+      context: docker/node
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: [ "/usr/local/bin/npx" ]
 
-    ncu:
-        container_name: node12-ncu
-        build:
-            context: docker/node
-            dockerfile: Dockerfile
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: [ "/usr/local/bin/ncu" ]
+  ncu:
+    container_name: node12-ncu
+    build:
+      context: docker/node
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: [ "/usr/local/bin/ncu" ]
 
-    yarn:
-        container_name: node12-yarn
-        build:
-            context: docker/node
-            dockerfile: Dockerfile
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: [ "/usr/local/bin/yarn" ]
+  yarn:
+    container_name: node12-yarn
+    build:
+      context: docker/node
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: [ "/usr/local/bin/yarn" ]
 
-    gulp:
-        container_name: node12-gulp
-        build:
-            context: docker/node
-            dockerfile: Dockerfile
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/gulp']
+  gulp:
+    container_name: node12-gulp
+    build:
+      context: docker/node
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: ['/usr/local/bin/gulp', '-f', './gulp.js']
 
-    eslint:
-        container_name: node12-eslint
-        build:
-            context: docker/node
-            dockerfile: Dockerfile
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/eslint']
+  eslint:
+    container_name: node12-eslint
+    build:
+      context: docker/node
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: ['/usr/local/bin/eslint']
+
+  hadolint:
+    container_name: hadolint
+    image: hadolint/hadolint:latest-debian
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: ['/bin/hadolint', '--config', './hadolint.yaml']
