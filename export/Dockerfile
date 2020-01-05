@@ -1,7 +1,6 @@
 FROM node:12-alpine
 
-RUN apk --update add \
-    bash \
+RUN apk --no-cache add \
     curl \
     groff \
     jq \
