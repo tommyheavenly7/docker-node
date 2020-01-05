@@ -1,0 +1,6 @@
+alias node="docker-compose run --rm cli"
+alias npm="docker-compose run --rm npm"
+alias npx="docker-compose run --rm npx"
+alias yarn="docker-compose run --rm yarn"
+alias gulp="docker-compose run --rm gulp -f ./gulp.js"
+alias eslint="docker-compose run --rm eslint"

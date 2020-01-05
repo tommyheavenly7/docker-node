@@ -1,85 +1,71 @@
-version: '3.5'
+version: '3.7'
 services:
     cli:
         container_name: node12
-        image: node:12-alpine
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/node']
-
-    npm:
-        container_name: node12-npm
-        image: node:12-alpine
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/npm']
-
-    npx:
-        container_name: node12-npx
-        image: node:12-alpine
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/npx']
-
-    yarn:
-        container_name: node12-yarn
-        image: node:12-alpine
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/yarn']
-
-    ncu:
-        container_name: node12-ncu
-        build: 
+        build:
             context: docker/node
             dockerfile: Dockerfile
         volumes:
             - ./:/var/project
         working_dir: /var/project
-        entrypoint: ['/usr/local/bin/ncu']
+#        entrypoint: [ "/usr/local/bin/node" ]
 
-    cli10:
-        container_name: node10
-        image: node:10-alpine
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/node']
-
-    npm10:
-        container_name: node10-npm
-        image: node:10-alpine
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/npm']
-
-    npx10:
-        container_name: node10-npx
-        image: node:10-alpine
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/npx']
-
-    yarn10:
-        container_name: node10-yarn
-        image: node:10-alpine
-        volumes:
-            - ./:/var/project
-        working_dir: /var/project
-        entrypoint: ['/usr/local/bin/yarn']
-
-    ncu10:
-        container_name: node10-ncu
-        build: 
-            context: docker/node10
+    npm:
+        container_name: node12-npm
+        build:
+            context: docker/node
             dockerfile: Dockerfile
         volumes:
             - ./:/var/project
         working_dir: /var/project
-        entrypoint: ['/usr/local/bin/ncu']
+        entrypoint: [ "/usr/local/bin/npm" ]
+
+    npx:
+        container_name: node12-npx
+        build:
+            context: docker/node
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: [ "/usr/local/bin/npx" ]
+
+    ncu:
+        container_name: node12-ncu
+        build:
+            context: docker/node
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: [ "/usr/local/bin/ncu" ]
+
+    yarn:
+        container_name: node12-yarn
+        build:
+            context: docker/node
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: [ "/usr/local/bin/yarn" ]
+
+    gulp:
+        container_name: node12-gulp
+        build:
+            context: docker/node
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/gulp']
+
+    eslint:
+        container_name: node12-eslint
+        build:
+            context: docker/node
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/project
+        working_dir: /var/project
+        entrypoint: ['/usr/local/bin/eslint']

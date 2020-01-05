@@ -1,8 +1,0 @@
-alias node="docker-compose run --rm cli"
-alias npm="docker-compose run --rm npm"
-alias npx="docker-compose run --rm npx"
-alias yarn="docker-compose run --rm yarn"
-alias node10="docker-compose run --rm cli10"
-alias npm10="docker-compose run --rm npm10"
-alias npx10="docker-compose run --rm npx10"
-alias yarn10="docker-compose run --rm yarn10"

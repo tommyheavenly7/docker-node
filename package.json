@@ -1,0 +1,15 @@
+{
+  "name": "docker-node-template",
+  "version": "0.0.1",
+  "description": "docker-compose template using node official images.",
+  "repository": "git@github.com:tommyheavenly7/docker-node-template.git",
+  "author": "Tomo L. Miyamoto",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-ejs": "^5.0.0",
+    "gulp-rename": "^2.0.0"
+  }
+}

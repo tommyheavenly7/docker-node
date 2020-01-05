@@ -1,0 +1,5 @@
+FROM node:8-alpine
+
+<%- include('../../_partial/run_npm-install-ncu') %>
+
+<%- include('../../_partial/entrypoint_ncu') %>
