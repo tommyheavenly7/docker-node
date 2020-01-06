@@ -1,0 +1,90 @@
+version: '3.7'
+services:
+  cli:
+    container_name: node10
+    build:
+      context: export/node10
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+
+  npm:
+    container_name: node10-npm
+    build:
+      context: export/node10
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: [ "/usr/local/bin/npm" ]
+
+  npx:
+    container_name: node10-npx
+    build:
+      context: export/node10
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: [ "/usr/local/bin/npx" ]
+
+  yarn:
+    container_name: node10-yarn
+    build:
+      context: export/node10
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: [ "/usr/local/bin/yarn" ]
+
+  ncu:
+    container_name: node10-ncu
+    build:
+      context: export/node10
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: [ "/usr/local/bin/ncu" ]
+
+  gulp:
+    container_name: node10-gulp
+    build:
+      context: export/node10
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: ['/usr/local/bin/gulp', '-f', './gulp.js']
+
+  webpack:
+    container_name: node10-webpack
+    build:
+      context: export/node10
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: ['/usr/local/bin/webpack']
+
+  webpack-cli:
+    container_name: node10-webpack-cli
+    build:
+      context: export/node10
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: ['/usr/local/bin/webpack-cli']
+
+  eslint:
+    container_name: node10-eslint
+    build:
+      context: export/node10
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: ['/usr/local/bin/eslint']
