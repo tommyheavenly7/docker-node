@@ -1,19 +1,15 @@
 version: '3.7'
 services:
-  cli:
+  node:
     container_name: node10
-    build:
-      context: export/node10
-      dockerfile: Dockerfile
+    image: tommynovember7/docker-node:node10
     volumes:
       - ./:/var/project
     working_dir: /var/project
 
   npm:
     container_name: node10-npm
-    build:
-      context: export/node10
-      dockerfile: Dockerfile
+    image: tommynovember7/docker-node:node10
     volumes:
       - ./:/var/project
     working_dir: /var/project
@@ -21,9 +17,7 @@ services:
 
   npx:
     container_name: node10-npx
-    build:
-      context: export/node10
-      dockerfile: Dockerfile
+    image: tommynovember7/docker-node:node10
     volumes:
       - ./:/var/project
     working_dir: /var/project
@@ -31,9 +25,7 @@ services:
 
   yarn:
     container_name: node10-yarn
-    build:
-      context: export/node10
-      dockerfile: Dockerfile
+    image: tommynovember7/docker-node:node10
     volumes:
       - ./:/var/project
     working_dir: /var/project
@@ -41,9 +33,7 @@ services:
 
   ncu:
     container_name: node10-ncu
-    build:
-      context: export/node10
-      dockerfile: Dockerfile
+    image: tommynovember7/docker-node:node10
     volumes:
       - ./:/var/project
     working_dir: /var/project
@@ -51,9 +41,7 @@ services:
 
   gulp:
     container_name: node10-gulp
-    build:
-      context: export/node10
-      dockerfile: Dockerfile
+    image: tommynovember7/docker-node:node10
     volumes:
       - ./:/var/project
     working_dir: /var/project
@@ -61,9 +49,7 @@ services:
 
   webpack:
     container_name: node10-webpack
-    build:
-      context: export/node10
-      dockerfile: Dockerfile
+    image: tommynovember7/docker-node:node10
     volumes:
       - ./:/var/project
     working_dir: /var/project
@@ -71,9 +57,7 @@ services:
 
   webpack-cli:
     container_name: node10-webpack-cli
-    build:
-      context: export/node10
-      dockerfile: Dockerfile
+    image: tommynovember7/docker-node:node10
     volumes:
       - ./:/var/project
     working_dir: /var/project
@@ -81,9 +65,7 @@ services:
 
   eslint:
     container_name: node10-eslint
-    build:
-      context: export/node10
-      dockerfile: Dockerfile
+    image: tommynovember7/docker-node:node10
     volumes:
       - ./:/var/project
     working_dir: /var/project
