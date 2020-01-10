@@ -12,4 +12,5 @@ RUN npm install -g npm@latest \
 RUN npm install -g webpack \
     webpack-cli \
     gulp \
-    eslint
+    eslint \
+    typescript
