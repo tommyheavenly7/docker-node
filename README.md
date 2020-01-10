@@ -108,6 +108,14 @@ services:
       - ./:/var/project
     working_dir: /var/project
     entrypoint: ['/usr/local/bin/eslint']
+
+  tsc:
+    container_name: node10-tsc
+    image: tommynovember7/docker-node:node10
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: ['/usr/local/bin/tsc']
 ```
 
 After that, you can prepare containers.
@@ -128,6 +136,7 @@ alias gulp="docker-compose run --rm gulp"
 alias webpack="docker-compose run --rm webpack"
 alias webpack-cli="docker-compose run --rm webpack-cli"
 alias eslint="docker-compose run --rm eslint"
+alias tsc="docker-compose run --rm tsc"
 ```
 
 ```shell script

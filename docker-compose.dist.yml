@@ -70,3 +70,11 @@ services:
       - ./:/var/project
     working_dir: /var/project
     entrypoint: ['/usr/local/bin/eslint']
+
+  tsc:
+    container_name: node10-tsc
+    image: tommynovember7/docker-node:node10
+    volumes:
+      - ./:/var/project
+    working_dir: /var/project
+    entrypoint: ['/usr/local/bin/tsc']
