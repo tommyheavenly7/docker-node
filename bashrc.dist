@@ -1,4 +1,4 @@
-alias node="docker-compose run --rm cli"
+alias node="docker-compose run --rm node"
 alias npm="docker-compose run --rm npm"
 alias npx="docker-compose run --rm npx"
 alias yarn="docker-compose run --rm yarn"
