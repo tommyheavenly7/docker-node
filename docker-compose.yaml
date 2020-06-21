@@ -1,23 +1,14 @@
 version: '3.7'
 services:
-  cli:
+  node:
     container_name: node12
     build:
       context: docker/node
       dockerfile: Dockerfile
     volumes:
-      - ./:/var/project
+      - "./:/var/project:delegated"
+      - "./node_modules:/var/project/node_modules:cached"
     working_dir: /var/project
-
-  yarn:
-    container_name: node12-yarn
-    build:
-      context: docker/node
-      dockerfile: Dockerfile
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: [ "/usr/local/bin/yarn" ]
 
   gulp:
     container_name: node12-gulp
@@ -25,14 +16,6 @@ services:
       context: docker/node
       dockerfile: Dockerfile
     volumes:
-      - ./:/var/project
+      - "./:/var/project:delegated"
     working_dir: /var/project
     entrypoint: ['/usr/local/bin/gulp', '-f', './gulp.js']
-
-  hadolint:
-    container_name: hadolint
-    image: hadolint/hadolint:latest-debian
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/bin/hadolint', '--config', './hadolint.yaml']
