@@ -10,22 +10,22 @@ You can extend it and efficiently create containers for development as you like.
 First, you might want to pull the image.
 
 ```shell script
-docker pull tommynovember7/docker-node:node10
+docker pull docker.pkg.github.com/tommyheavenly7/docker-node/node10:latest
 ```
 
 After that, you can run the container.
 
 ```shell script
-docker run --rm -v $(pwd):/var/project -w /var/project tommynovember7/docker-node:node10
+docker run --rm -v $(pwd):/var/project -w /var/project docker.pkg.github.com/tommyheavenly7/docker-node/node10:latest
 ```
 
 Here are execution examples:
 
 ```shell script
-$ docker run --rm -v $(pwd):/var/project -w /var/project tommynovember7/docker-node:node10 --version
+$ docker run --rm -v $(pwd):/var/project -w /var/project docker.pkg.github.com/tommyheavenly7/docker-node/node10:latest --version
 v10.18.0
 
-$ docker run --rm -v $(pwd):/var/project -w /var/project --entrypoint pwd tommynovember7/docker-node:node10
+$ docker run --rm -v $(pwd):/var/project -w /var/project --entrypoint pwd docker.pkg.github.com/tommyheavenly7/docker-node/node10:latest
 /var/project
 ```
 
@@ -40,82 +40,10 @@ version: '3.7'
 services:
   node:
     container_name: node10
-    image: tommynovember7/docker-node:node10
+    image: docker.pkg.github.com/tommyheavenly7/docker-node/node10:latest
     volumes:
       - ./:/var/project
     working_dir: /var/project
-
-  npm:
-    container_name: node10-npm
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: [ "/usr/local/bin/npm" ]
-
-  npx:
-    container_name: node10-npx
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: [ "/usr/local/bin/npx" ]
-
-  yarn:
-    container_name: node10-yarn
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: [ "/usr/local/bin/yarn" ]
-
-  ncu:
-    container_name: node10-ncu
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: [ "/usr/local/bin/ncu" ]
-
-  gulp:
-    container_name: node10-gulp
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/usr/local/bin/gulp', '-f', './gulp.js']
-
-  webpack:
-    container_name: node10-webpack
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/usr/local/bin/webpack']
-
-  webpack-cli:
-    container_name: node10-webpack-cli
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/usr/local/bin/webpack-cli']
-
-  eslint:
-    container_name: node10-eslint
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/usr/local/bin/eslint']
-
-  tsc:
-    container_name: node10-tsc
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/usr/local/bin/tsc']
 ```
 
 After that, you can prepare containers.
@@ -150,5 +78,5 @@ $ command -v node
 alias node='docker-compose run --rm node'
 
 $ node --version
-v10.18.0
+v10.21.0
 ```
