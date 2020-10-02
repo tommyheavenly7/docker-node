@@ -1,27 +1,34 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  create:
+    tags:
+      - "*"
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        echo ${{ secrets.PACKAGE_TOKEN }} | docker login docker.pkg.github.com -u ${{ secrets.USER_NAME }} --password-stdin
-        docker build -t docker.pkg.github.com/tommyheavenly7/docker-node/node10:latest ./export/node10/
-        docker build -t docker.pkg.github.com/tommyheavenly7/docker-node/node12:latest ./export/node12/
-        docker build -t docker.pkg.github.com/tommyheavenly7/docker-node/node13:latest ./export/node13/
-        docker build -t docker.pkg.github.com/tommyheavenly7/docker-node/node14:latest ./export/node14/
-        docker push docker.pkg.github.com/tommyheavenly7/docker-node/node10:latest
-        docker push docker.pkg.github.com/tommyheavenly7/docker-node/node12:latest
-        docker push docker.pkg.github.com/tommyheavenly7/docker-node/node13:latest
-        docker push docker.pkg.github.com/tommyheavenly7/docker-node/node14:latest
+      - uses: actions/checkout@v2
+      - name: Get the version
+        id: vars
+        run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+      - name: Build the Docker image
+        run: |
+          echo ${{ secrets.PACKAGE_TOKEN }} | docker login docker.pkg.github.com -u ${{ secrets.USER_NAME }} --password-stdin
+          docker build --pull -t docker.pkg.github.com/tommyheavenly7/docker-node/node10:${{ steps.vars.outputs.tag }} ./export/node10/
+          docker push docker.pkg.github.com/tommyheavenly7/docker-node/node10:${{ steps.vars.outputs.tag }}
+          docker build --pull -t docker.pkg.github.com/tommyheavenly7/docker-node/node10:latest ./export/node10/
+          docker push docker.pkg.github.com/tommyheavenly7/docker-node/node10:latest
+          docker build --pull -t docker.pkg.github.com/tommyheavenly7/docker-node/node12:${{ steps.vars.outputs.tag }} ./export/node12/
+          docker push docker.pkg.github.com/tommyheavenly7/docker-node/node12:${{ steps.vars.outputs.tag }}
+          docker build --pull -t docker.pkg.github.com/tommyheavenly7/docker-node/node12:latest ./export/node12/
+          docker push docker.pkg.github.com/tommyheavenly7/docker-node/node12:latest
+          docker build --pull -t docker.pkg.github.com/tommyheavenly7/docker-node/node13:${{ steps.vars.outputs.tag }} ./export/node13/
+          docker push docker.pkg.github.com/tommyheavenly7/docker-node/node13:${{ steps.vars.outputs.tag }}
+          docker build --pull -t docker.pkg.github.com/tommyheavenly7/docker-node/node13:latest ./export/node13/
+          docker push docker.pkg.github.com/tommyheavenly7/docker-node/node13:latest
+          docker build --pull -t docker.pkg.github.com/tommyheavenly7/docker-node/node14:${{ steps.vars.outputs.tag }} ./export/node14/
+          docker push docker.pkg.github.com/tommyheavenly7/docker-node/node14:${{ steps.vars.outputs.tag }}
+          docker build --pull -t docker.pkg.github.com/tommyheavenly7/docker-node/node14:latest ./export/node14/
+          docker push docker.pkg.github.com/tommyheavenly7/docker-node/node14:latest
