@@ -16,8 +16,8 @@ alias _down="docker-compose down --remove-orphans"
 alias _no-start="docker-compose up --no-start --force-recreate --remove-orphans"
 alias _mysql="mysql --host=127.0.0.1 --user=root --default-character-set=utf8mb4"
 
-alias aws='docker run --rm -e "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" -e "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" -e "AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}" -v "$(pwd):/aws" tommynovember7/aws-cli:latest'
-alias hadolint='docker run --rm -v "$(pwd):/tmp" -w /tmp --entrypoint /bin/hadolint hadolint/hadolint:latest-debian'
+alias hadolint='docker run -ti --rm -v "$(pwd):/tmp" -v "${PROJECT_ROOT}/docker/hadolint.yaml:/root/hadolint.yaml" -w /tmp --entrypoint /bin/hadolint hadolint/hadolint:latest-debian --config /root/hadolint.yaml'
+alias git='docker run -ti --rm -v "$(pwd):/git:delegated" docker.pkg.github.com/tommyheavenly7/github/git:latest'
 
 alias node="docker-compose run --rm node node"
 alias yarn="docker-compose run --rm node yarn"

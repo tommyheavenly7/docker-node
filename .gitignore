@@ -1,3 +1,7 @@
+.bashrc
+.env
+.githubtoken.bashrc
+.githubtoken.bashrc
 .idea
+docker-compose.yaml
 node_modules
-.githubtoken

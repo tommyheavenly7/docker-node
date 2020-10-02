@@ -2,79 +2,21 @@ version: '3.7'
 services:
   node:
     container_name: node10
-    image: tommynovember7/docker-node:node10
+    build: 
+      context: docker/node
+      dockerfile: Dockerfile
     volumes:
       - ./:/var/project
+      - "./docker/.volumes/npm:/root/.npm:delegated"
     working_dir: /var/project
-
-  npm:
-    container_name: node10-npm
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: [ "/usr/local/bin/npm" ]
-
-  npx:
-    container_name: node10-npx
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: [ "/usr/local/bin/npx" ]
-
-  yarn:
-    container_name: node10-yarn
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: [ "/usr/local/bin/yarn" ]
-
-  ncu:
-    container_name: node10-ncu
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: [ "/usr/local/bin/ncu" ]
 
   gulp:
     container_name: node10-gulp
-    image: tommynovember7/docker-node:node10
+    build: 
+      context: docker/node
+      dockerfile: Dockerfile
     volumes:
       - ./:/var/project
+      - "./docker/.volumes/npm:/root/.npm:delegated"
     working_dir: /var/project
     entrypoint: ['/usr/local/bin/gulp', '-f', './gulp.js']
-
-  webpack:
-    container_name: node10-webpack
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/usr/local/bin/webpack']
-
-  webpack-cli:
-    container_name: node10-webpack-cli
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/usr/local/bin/webpack-cli']
-
-  eslint:
-    container_name: node10-eslint
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/usr/local/bin/eslint']
-
-  tsc:
-    container_name: node10-tsc
-    image: tommynovember7/docker-node:node10
-    volumes:
-      - ./:/var/project
-    working_dir: /var/project
-    entrypoint: ['/usr/local/bin/tsc']
