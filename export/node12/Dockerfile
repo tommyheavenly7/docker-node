@@ -14,15 +14,16 @@ RUN apk --no-cache add \
     nasm \
     openssl \
     py-pip \
-    python3-dev \
     python3 \
     zlib-dev
 
 # Python
-RUN pip install --upgrade pip setuptools
+ENV PYTHONUNBUFFERED=1
+RUN ln -sf python3 /usr/bin/python && \
+    python3 -m ensurepip && \
+    pip3 install --no-cache --upgrade pip setuptools
 
 RUN npm install -g \
-    npm@latest \
     npm-check-updates \
     eslint \
     gulp \
