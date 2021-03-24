@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:14-alpine
 
 RUN apk --no-cache add \
     autoconf \
@@ -16,8 +16,13 @@ RUN apk --no-cache add \
     python3 \
     zlib-dev
 
+#python
+ENV PYTHONUNBUFFERED=1
+RUN ln -sf python3 /usr/bin/python && \
+    python3 -m ensurepip && \
+    pip3 install --no-cache --upgrade pip setuptools
+
 RUN npm install --global --no-optional \
-    npm@latest \
     npm-check-updates \
     eslint \
     gulp \
