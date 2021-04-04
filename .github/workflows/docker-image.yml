@@ -15,6 +15,7 @@ jobs:
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
       - name: Build the Docker image
         run: |
+          echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           echo ${{ secrets.PACKAGE_TOKEN }} | docker login docker.pkg.github.com -u tommyheavenly7 --password-stdin
           docker build --pull -t docker.pkg.github.com/tommyheavenly7/docker-node/node10:${{ steps.vars.outputs.tag }} ./export/node10/
           docker push docker.pkg.github.com/tommyheavenly7/docker-node/node10:${{ steps.vars.outputs.tag }}
